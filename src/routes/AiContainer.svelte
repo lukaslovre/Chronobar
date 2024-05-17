@@ -103,6 +103,7 @@
       color: $primary-color-dark;
       font-size: 1rem;
       line-height: 150%;
+      text-align: left;
 
       cursor: pointer;
       transition:
