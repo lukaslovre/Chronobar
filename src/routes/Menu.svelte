@@ -1,5 +1,8 @@
 <script lang="ts">
+  import { slide } from "svelte/transition";
   import MenuItem from "./MenuItem.svelte";
+  import ChevronIcon from "$lib/icons/ChevronIcon.svelte";
+  import { groupByField } from "$lib/utils";
 
   const structuredMenu: MenuItemType[] = [
     {
@@ -152,43 +155,82 @@
     },
   ];
 
-  function groupByField(
-    arr: MenuItemType[],
-    field: keyof MenuItemType
-  ): Record<string, MenuItemType[]> {
-    return arr.reduce((acc, item) => {
-      const key = item[field];
-      if (!acc[key]) {
-        acc[key] = [];
-      }
-      acc[key].push(item);
-      return acc;
-    }, {});
+  const slideTransitionProperties = {
+    duration: 200,
+  };
+
+  let collapsedSections: string[] = [];
+
+  function addSectionToCollapsedList(sectionName: string) {
+    if (collapsedSections.includes(sectionName)) {
+      collapsedSections = collapsedSections.filter((section) => section !== sectionName);
+    } else {
+      collapsedSections = [...collapsedSections, sectionName];
+    }
   }
 </script>
 
 <section id="menu">
   <div class="category-depth-1">
     {#each Object.entries(groupByField(structuredMenu, "category")) as [category, items]}
-      <h1># {category}</h1>
-
-      <div class="category-depth-2">
-        {#each Object.entries(groupByField(items, "sub_category")) as [sub_category, sub_items]}
-          <h2>## {sub_category}</h2>
-
-          <div class="category-depth-3">
-            {#each Object.entries(groupByField(sub_items, "sub_sub_category")) as [sub_sub_category, sub_sub_items]}
-              <h3>### {sub_sub_category}</h3>
-
-              <ul>
-                {#each sub_sub_items as item}
-                  <MenuItem {item} />
-                {/each}
-              </ul>
-            {/each}
-          </div>
-        {/each}
+      <div class="title-and-collapseButton">
+        <h1># {category}</h1>
+        <button
+          on:click={() => {
+            addSectionToCollapsedList(category);
+          }}
+        >
+          <ChevronIcon rotation={collapsedSections.includes(category) ? 180 : 0} />
+        </button>
       </div>
+
+      {#if !collapsedSections.includes(category)}
+        <div class="category-depth-2" transition:slide={slideTransitionProperties}>
+          {#each Object.entries(groupByField(items, "sub_category")) as [sub_category, sub_items]}
+            <div class="title-and-collapseButton">
+              <h2>## {sub_category}</h2>
+
+              <button
+                on:click={() => {
+                  addSectionToCollapsedList(sub_category);
+                }}
+              >
+                <ChevronIcon
+                  rotation={collapsedSections.includes(sub_category) ? 180 : 0}
+                />
+              </button>
+            </div>
+
+            {#if !collapsedSections.includes(sub_category)}
+              <div class="category-depth-3" transition:slide={slideTransitionProperties}>
+                {#each Object.entries(groupByField(sub_items, "sub_sub_category")) as [sub_sub_category, sub_sub_items]}
+                  <div class="title-and-collapseButton">
+                    <h3>### {sub_sub_category}</h3>
+
+                    <button
+                      on:click={() => {
+                        addSectionToCollapsedList(sub_sub_category);
+                      }}
+                    >
+                      <ChevronIcon
+                        rotation={collapsedSections.includes(sub_sub_category) ? 180 : 0}
+                      />
+                    </button>
+                  </div>
+
+                  {#if !collapsedSections.includes(sub_sub_category)}
+                    <ul transition:slide={slideTransitionProperties}>
+                      {#each sub_sub_items as item}
+                        <MenuItem {item} />
+                      {/each}
+                    </ul>
+                  {/if}
+                {/each}
+              </div>
+            {/if}
+          {/each}
+        </div>
+      {/if}
     {/each}
   </div>
 </section>
@@ -238,6 +280,28 @@
 
     h3 {
       font-size: 1rem;
+    }
+  }
+
+  .title-and-collapseButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: $primary-color-dark-transparent;
+      }
     }
   }
 

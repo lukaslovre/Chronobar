@@ -9,6 +9,3 @@
 <AiContainer />
 
 <Menu />
-
-<style lang="scss">
-</style>
