@@ -10,7 +10,7 @@
   xmlns="http://www.w3.org/2000/svg"
   style:transform={`rotate(${rotation}deg)`}
 >
-  <path d="M7.42 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.42 8.59Z" fill="#A4161A" />
+  <path d="M7.42 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.42 8.59Z" fill="#135AB9" />
 </svg>
 
 <style lang="scss">

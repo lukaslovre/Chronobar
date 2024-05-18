@@ -246,7 +246,7 @@
     h1,
     h2,
     h3 {
-      color: $primary-color;
+      color: $primary-color-text;
       text-transform: uppercase;
       font-weight: 500;
     }
@@ -300,7 +300,7 @@
       justify-content: center;
 
       &:hover {
-        background-color: $primary-color-dark-transparent;
+        background-color: rgba($primary-color-dark, 0.1);
       }
     }
   }
