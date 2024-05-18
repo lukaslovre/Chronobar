@@ -1,63 +1,190 @@
 <script lang="ts">
   import MenuCategory from "./MenuCategory.svelte";
+  import MenuItem from "./MenuItem.svelte";
 
-  const structuredMenu = [
+  const structuredMenu: MenuItem[] = [
     {
+      id: "food101",
+      name: "Rustic Italian Pizza",
+      description:
+        "Hand-tossed crust topped with homemade marinara sauce, mozzarella, fresh basil, and a selection of Italian meats.",
       category: "Food",
-      childrenCategories: [
+      sub_category: "Main Course",
+      sub_sub_category: "Pizza",
+      price: 12.5,
+      currency: "€",
+      nutrition: {
+        calories: 800,
+        protein: 35,
+        carbs: 92,
+        fats: 33,
+        allergens: ["gluten", "dairy"],
+      },
+      popularity_score_out_of_5: 4.5,
+      image_url: "https://picsum.photos/200",
+      availability: "Available",
+      last_updated: new Date("2024-05-17T00:00:00Z"),
+      customization_options: [
         {
-          category: "Appetizers",
-          items: [
-            { name: "Bruschetta", price: "5.00" },
-            { name: "Calamari", price: "7.00" },
-            { name: "Garlic Bread", price: "3.00" },
-          ],
+          name: "Extra Cheese",
+          additional_cost: 2.0,
         },
         {
-          category: "Main Course",
-          items: [
-            { name: "Spaghetti Carbonara", price: "10.00" },
-            { name: "Lasagna", price: "12.00" },
-            { name: "Pizza Margherita", price: "8.00" },
-          ],
-        },
-        {
-          category: "Desserts",
-          items: [
-            { name: "Tiramisu", price: "5.00" },
-            { name: "Panna Cotta", price: "4.00" },
-            { name: "Gelato", price: "3.00" },
-          ],
+          name: "Gluten-Free Crust",
+          additional_cost: 3.5,
         },
       ],
     },
     {
-      category: "Drinks",
-      childrenCategories: [
+      id: "food102",
+      name: "Classic Cheeseburger",
+      description:
+        "Grilled beef patty with cheddar cheese, lettuce, tomato, and our signature sauce on a sesame bun.",
+      category: "Food",
+      sub_category: "Main Course",
+      sub_sub_category: "Burger",
+      price: 8.0,
+      currency: "€",
+      nutrition: {
+        calories: 600,
+        protein: 30,
+        carbs: 40,
+        fats: 35,
+        allergens: ["gluten", "dairy"],
+      },
+      popularity_score_out_of_5: 4.2,
+      image_url: "https://picsum.photos/200",
+      availability: "Available",
+      last_updated: new Date("2024-05-17T00:00:00Z"),
+      customization_options: [
         {
-          category: "Non-Alcoholic",
-          items: [
-            { name: "Coca-Cola", price: "2.00" },
-            { name: "Orange Juice", price: "3.00" },
-            { name: "Lemonade", price: "3.00" },
-          ],
+          name: "Add Bacon",
+          additional_cost: 1.5,
         },
         {
-          category: "Alcoholic",
-          items: [
-            { name: "Beer", price: "4.00" },
-            { name: "Wine", price: "5.00" },
-            { name: "Cocktail", price: "7.00" },
-          ],
+          name: "Switch to Vegan Patty",
+          additional_cost: 2.5,
+        },
+      ],
+    },
+    {
+      id: "food103",
+      name: "Berry Smoothie",
+      description:
+        "A refreshing blend of strawberries, blueberries, and raspberries with a touch of honey and yogurt.",
+      category: "Food",
+      sub_category: "Drinks",
+      sub_sub_category: "Smoothie",
+      price: 5.5,
+      currency: "€",
+      nutrition: {
+        calories: 280,
+        protein: 8,
+        carbs: 50,
+        fats: 3,
+        allergens: ["dairy"],
+      },
+      popularity_score_out_of_5: 4.8,
+      image_url: "https://picsum.photos/200",
+      availability: "Available",
+      last_updated: new Date("2024-05-17T00:00:00Z"),
+      customization_options: [
+        {
+          name: "Add Protein Powder",
+          additional_cost: 1.0,
+        },
+      ],
+    },
+    {
+      id: "food104",
+      name: "Margherita Pasta",
+      description:
+        "Penne pasta tossed in a rich tomato sauce garnished with fresh basil and mozzarella balls.",
+      category: "Food",
+      sub_category: "Main Course",
+      sub_sub_category: "Pasta",
+      price: 10.0,
+      currency: "€",
+      nutrition: {
+        calories: 700,
+        protein: 20,
+        carbs: 90,
+        fats: 22,
+        allergens: ["gluten", "dairy"],
+      },
+      popularity_score_out_of_5: 4.0,
+      image_url: "https://picsum.photos/200",
+      availability: "Available",
+      last_updated: new Date("2024-05-17T00:00:00Z"),
+      customization_options: [
+        {
+          name: "Add Chicken",
+          additional_cost: 3.0,
+        },
+      ],
+    },
+    {
+      id: "food105",
+      name: "French Onion Soup",
+      description:
+        "Rich beef broth with caramelized onions, topped with a toasted baguette and melted Gruyère cheese.",
+      category: "Food",
+      sub_category: "Starters",
+      sub_sub_category: "Soup",
+      price: 7.0,
+      currency: "€",
+      nutrition: {
+        calories: 400,
+        protein: 18,
+        carbs: 36,
+        fats: 22,
+        allergens: ["gluten", "dairy"],
+      },
+      popularity_score_out_of_5: 4.3,
+      image_url: "https://picsum.photos/200",
+      availability: "Available",
+      last_updated: new Date("2024-05-17T00:00:00Z"),
+      customization_options: [
+        {
+          name: "Extra Cheese",
+          additional_cost: 1.0,
         },
       ],
     },
   ];
+
+  function groupByField(
+    arr: MenuItem[],
+    field: keyof MenuItem
+  ): Record<string, MenuItem[]> {
+    return arr.reduce((acc, item) => {
+      const key = item[field];
+      if (!acc[key]) {
+        acc[key] = [];
+      }
+      acc[key].push(item);
+      return acc;
+    }, {});
+  }
 </script>
 
 <section id="menu">
-  {#each structuredMenu as category (category.category)}
-    <MenuCategory {category} level={1} />
+  {#each Object.entries(groupByField(structuredMenu, "category")) as [category, items]}
+    <h1>{category}</h1>
+
+    {#each Object.entries(groupByField(items, "sub_category")) as [sub_category, sub_items]}
+      <h2>{sub_category}</h2>
+
+      {#each Object.entries(groupByField(sub_items, "sub_sub_category")) as [sub_sub_category, sub_sub_items]}
+        <h3>{sub_sub_category}</h3>
+
+        <ul>
+          {#each sub_sub_items as item}
+            <MenuItem {item} />
+          {/each}
+        </ul>
+      {/each}
+    {/each}
   {/each}
 </section>
 
@@ -69,5 +196,8 @@
     flex-direction: column;
     gap: 3rem;
     padding: 0 1.5rem;
+  }
+  ul {
+    list-style: none;
   }
 </style>
