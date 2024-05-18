@@ -1,4 +1,4 @@
-type MenuItem = {
+type MenuItemType = {
   id: string;
   name: string;
   description: string;

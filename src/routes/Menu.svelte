@@ -1,8 +1,7 @@
 <script lang="ts">
-  import MenuCategory from "./MenuCategory.svelte";
   import MenuItem from "./MenuItem.svelte";
 
-  const structuredMenu: MenuItem[] = [
+  const structuredMenu: MenuItemType[] = [
     {
       id: "food101",
       name: "Rustic Italian Pizza",
@@ -72,8 +71,8 @@
       name: "Berry Smoothie",
       description:
         "A refreshing blend of strawberries, blueberries, and raspberries with a touch of honey and yogurt.",
-      category: "Food",
-      sub_category: "Drinks",
+      category: "Drinks",
+      sub_category: "Non-alcoholic",
       sub_sub_category: "Smoothie",
       price: 5.5,
       currency: "€",
@@ -154,9 +153,9 @@
   ];
 
   function groupByField(
-    arr: MenuItem[],
-    field: keyof MenuItem
-  ): Record<string, MenuItem[]> {
+    arr: MenuItemType[],
+    field: keyof MenuItemType
+  ): Record<string, MenuItemType[]> {
     return arr.reduce((acc, item) => {
       const key = item[field];
       if (!acc[key]) {
@@ -169,23 +168,29 @@
 </script>
 
 <section id="menu">
-  {#each Object.entries(groupByField(structuredMenu, "category")) as [category, items]}
-    <h1>{category}</h1>
+  <div class="category-depth-1">
+    {#each Object.entries(groupByField(structuredMenu, "category")) as [category, items]}
+      <h1># {category}</h1>
 
-    {#each Object.entries(groupByField(items, "sub_category")) as [sub_category, sub_items]}
-      <h2>{sub_category}</h2>
+      <div class="category-depth-2">
+        {#each Object.entries(groupByField(items, "sub_category")) as [sub_category, sub_items]}
+          <h2>## {sub_category}</h2>
 
-      {#each Object.entries(groupByField(sub_items, "sub_sub_category")) as [sub_sub_category, sub_sub_items]}
-        <h3>{sub_sub_category}</h3>
+          <div class="category-depth-3">
+            {#each Object.entries(groupByField(sub_items, "sub_sub_category")) as [sub_sub_category, sub_sub_items]}
+              <h3>### {sub_sub_category}</h3>
 
-        <ul>
-          {#each sub_sub_items as item}
-            <MenuItem {item} />
-          {/each}
-        </ul>
-      {/each}
+              <ul>
+                {#each sub_sub_items as item}
+                  <MenuItem {item} />
+                {/each}
+              </ul>
+            {/each}
+          </div>
+        {/each}
+      </div>
     {/each}
-  {/each}
+  </div>
 </section>
 
 <style lang="scss">
@@ -194,10 +199,52 @@
   #menu {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
+
+    h1,
+    h2,
+    h3 {
+      color: $primary-color;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .category-depth-1,
+    .category-depth-2,
+    .category-depth-3 {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .category-depth-1 {
+      gap: 2.5rem;
+    }
+
+    .category-depth-2 {
+      gap: 2rem;
+    }
+
+    .category-depth-3 {
+      gap: 1rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+    }
   }
+
   ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 </style>

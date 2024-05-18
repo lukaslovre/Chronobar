@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let item: MenuItem;
+  export let item: MenuItemType;
 </script>
 
 <li>
@@ -7,7 +7,7 @@
     <p class="name">{item.name}</p>
     <p class="description">{item.description}</p>
   </div>
-  <p class="price">{item.price} €</p>
+  <p class="price">{item.price.toFixed(2)} €</p>
 </li>
 
 <style lang="scss">
