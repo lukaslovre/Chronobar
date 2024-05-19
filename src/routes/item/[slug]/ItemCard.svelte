@@ -1,79 +1,100 @@
 <script lang="ts">
-  const itemData: MenuItemType = {
-    id: "food101",
-    name: "Rustic Italian Pizza",
-    description:
-      "Hand-tossed crust topped with homemade marinara sauce, mozzarella, fresh basil, and a selection of Italian meats.",
-    category: "Food",
-    sub_category: "Main Course",
-    sub_sub_category: "Pizza",
-    price: 12.5,
-    currency: "€",
-    nutrition: {
-      calories: 800,
-      protein: 35,
-      carbs: 92,
-      fats: 33,
-      allergens: ["gluten", "dairy"],
-    },
-    popularity_score_out_of_5: 4.5,
-    image_url: "https://picsum.photos/200",
-    availability: "Available",
-    last_updated: new Date("2024-05-17T00:00:00Z"),
-    customization_options: [
-      {
-        name: "Extra Cheese",
-        additional_cost: 2.0,
-      },
-      {
-        name: "Gluten-Free Crust",
-        additional_cost: 3.5,
-      },
-    ],
-  };
+  import pb from "$lib/pocketbase";
+  import { onMount } from "svelte";
+
+  //   const itemData: MenuItemType = {
+  //     id: "food101",
+  //     name: "Rustic Italian Pizza",
+  //     description:
+  //       "Hand-tossed crust topped with homemade marinara sauce, mozzarella, fresh basil, and a selection of Italian meats.",
+  //     category: "Food",
+  //     sub_category: "Main Course",
+  //     sub_sub_category: "Pizza",
+  //     price: 12.5,
+  //     currency: "€",
+  //     nutrition: {
+  //       calories: 800,
+  //       protein: 35,
+  //       carbs: 92,
+  //       fats: 33,
+  //       allergens: ["gluten", "dairy"],
+  //     },
+  //     popularity_score_out_of_5: 4.5,
+  //     image_url: "https://picsum.photos/200",
+  //     availability: "Available",
+  //     last_updated: new Date("2024-05-17T00:00:00Z"),
+  //     customization_options: [
+  //       {
+  //         name: "Extra Cheese",
+  //         additional_cost: 2.0,
+  //       },
+  //       {
+  //         name: "Gluten-Free Crust",
+  //         additional_cost: 3.5,
+  //       },
+  //     ],
+  //   };
+
+  // Get the item data from pocketbase
+
+  let itemData: MenuItemType;
+
+  onMount(() => {
+    pb.collection("menu_items")
+      .getList()
+      .then((items) => {
+        console.log(items);
+        itemData = items.items[0];
+      });
+  });
 </script>
 
 <main>
-  <img src={itemData.image_url} alt={itemData.name} />
+  {#if itemData}
+    <img
+      src={`http://127.0.0.1:8090/api/files/${itemData.collectionId}/${itemData.id}/${itemData.image_url}`}
+      alt={itemData.name}
+    />
 
-  <div class="name-and-price">
-    <h1>{itemData.name}</h1>
-    <p>{itemData.price.toFixed(2)} €</p>
-  </div>
-
-  <p class="description">{itemData.description}</p>
-
-  <div class="allergens-container">
-    <p class="label">Allergens</p>
-    <div>
-      {#each itemData.nutrition.allergens as allergen}
-        <div class="tag">{allergen}</div>
-      {/each}
+    <div class="name-and-price">
+      <h1>{itemData.name}</h1>
+      <p>{itemData.price.toFixed(2)} €</p>
     </div>
-  </div>
 
-  <div class="nutrition-container">
-    <p class="label">Nutrition</p>
+    <p class="description">{itemData.description}</p>
 
-    <table>
-      <thead>
-        <tr>
-          <td>Calories</td>
-          <td>Protein</td>
-          <td>Carbs</td>
-          <td>Fats</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{itemData.nutrition.calories} kcal</td>
-          <td>{itemData.nutrition.protein} g</td>
-          <td>{itemData.nutrition.carbs} g</td>
-          <td>{itemData.nutrition.fats} g</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="allergens-container">
+      <p class="label">Allergens</p>
+      <div>
+        {#each itemData.allergens as allergen}
+          <div class="tag">{allergen}</div>
+        {/each}
+      </div>
+    </div>
+
+    <div class="nutrition-container">
+      <p class="label">Nutrition</p>
+
+      <table>
+        <thead>
+          <tr>
+            <td>Calories</td>
+            <td>Protein</td>
+            <td>Carbs</td>
+            <td>Fats</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{itemData.nutrition.calories} kcal</td>
+            <td>{itemData.nutrition.protein} g</td>
+            <td>{itemData.nutrition.carbs} g</td>
+            <td>{itemData.nutrition.fats} g</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  {/if}
 </main>
 
 <style lang="scss">

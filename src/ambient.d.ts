@@ -12,8 +12,8 @@ type MenuItemType = {
     protein: number;
     carbs: number;
     fats: number;
-    allergens: string[];
   };
+  allergens: string[];
   popularity_score_out_of_5: number;
   image_url: string;
   availability: string;
