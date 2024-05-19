@@ -46,7 +46,7 @@
 
   let inputValue = "";
 
-  function putPremadeQuestionIntoInput(event) {
+  function putPremadeQuestionIntoInput(event: CustomEvent) {
     inputValue = event.detail.question;
   }
 </script>
@@ -170,7 +170,8 @@
       padding: 0.25rem 2rem;
       border: 2px solid $primary-color;
       border-radius: 0.25rem;
-      background-color: transparent;
+      background-color: #fff;
+      box-shadow: 0 2px 1px rgba(0, 0, 0, 0.125);
 
       color: $primary-color;
       font-weight: 700;
