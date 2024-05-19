@@ -25,6 +25,16 @@
     background-color: #fff;
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
 
+    transition:
+      box-shadow 100ms ease-out,
+      transform 100ms ease-out;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+      transform: translateY(-0.25rem);
+    }
+
     .left {
       display: flex;
       flex-direction: column;
