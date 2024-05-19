@@ -2,14 +2,16 @@
   export let item: MenuItemType;
 </script>
 
-<li class="menu-item">
-  <div class="left">
-    <p class="name">{item.name}</p>
-    <p class="description">{item.description}</p>
-    <p class="price">{item.price.toFixed(2)} €</p>
-  </div>
-  <img src={item.image_url} alt={item.name} />
-</li>
+<a href="/item/1">
+  <li class="menu-item">
+    <div class="left">
+      <p class="name">{item.name}</p>
+      <p class="description">{item.description}</p>
+      <p class="price">{item.price.toFixed(2)} €</p>
+    </div>
+    <img src={item.image_url} alt={item.name} />
+  </li>
+</a>
 
 <style lang="scss">
   @import "$lib/styleVariables.scss";
