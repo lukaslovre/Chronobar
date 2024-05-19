@@ -16,6 +16,11 @@
 <style lang="scss">
   @import "$lib/styleVariables.scss";
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   .menu-item {
     width: 100%;
     display: flex;

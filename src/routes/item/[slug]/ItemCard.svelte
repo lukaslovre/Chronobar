@@ -88,7 +88,7 @@
     gap: 1.75rem;
     padding: 1.5rem;
     width: calc(100% - 2rem); // Subtract padding (1rem on each side)
-    margin: 0 auto;
+    margin: 3rem auto 4rem auto;
     border-radius: 0.5rem;
 
     img {
