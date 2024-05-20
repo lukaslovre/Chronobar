@@ -5,6 +5,7 @@
 
   export let question: string;
 
+  // TODO: handle the press event
   const dispatch = createEventDispatcher();
 </script>
 

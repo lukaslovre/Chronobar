@@ -2,42 +2,40 @@
   import pb from "$lib/pocketbase";
   import { onMount } from "svelte";
 
-  //   const itemData: MenuItemType = {
-  //     id: "food101",
-  //     name: "Rustic Italian Pizza",
-  //     description:
-  //       "Hand-tossed crust topped with homemade marinara sauce, mozzarella, fresh basil, and a selection of Italian meats.",
-  //     category: "Food",
-  //     sub_category: "Main Course",
-  //     sub_sub_category: "Pizza",
-  //     price: 12.5,
-  //     currency: "€",
-  //     nutrition: {
-  //       calories: 800,
-  //       protein: 35,
-  //       carbs: 92,
-  //       fats: 33,
-  //       allergens: ["gluten", "dairy"],
-  //     },
-  //     popularity_score_out_of_5: 4.5,
-  //     image_url: "https://picsum.photos/200",
-  //     availability: "Available",
-  //     last_updated: new Date("2024-05-17T00:00:00Z"),
-  //     customization_options: [
-  //       {
-  //         name: "Extra Cheese",
-  //         additional_cost: 2.0,
-  //       },
-  //       {
-  //         name: "Gluten-Free Crust",
-  //         additional_cost: 3.5,
-  //       },
-  //     ],
-  //   };
+  let itemData: MenuItemType = {
+    id: "food101",
+    name: "Rustic Italian Pizza",
+    description:
+      "Hand-tossed crust topped with homemade marinara sauce, mozzarella, fresh basil, and a selection of Italian meats.",
+    category: "Food",
+    sub_category: "Main Course",
+    sub_sub_category: "Pizza",
+    price: 12.5,
+    currency: "€",
+    nutrition: {
+      calories: 800,
+      protein: 35,
+      carbs: 92,
+      fats: 33,
+    },
+    allergens: ["gluten", "dairy"],
+    popularity_score_out_of_5: 4.5,
+    image_url: "https://picsum.photos/200",
+    availability: "Available",
+    last_updated: new Date("2024-05-17T00:00:00Z"),
+    customization_options: [
+      {
+        name: "Extra Cheese",
+        additional_cost: 2.0,
+      },
+      {
+        name: "Gluten-Free Crust",
+        additional_cost: 3.5,
+      },
+    ],
+  };
 
   // Get the item data from pocketbase
-
-  let itemData: MenuItemType;
 
   onMount(() => {
     pb.collection("menu_items")
