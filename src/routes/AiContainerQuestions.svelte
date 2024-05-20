@@ -47,7 +47,7 @@
 
 <div class="premade-questions-container">
   {#each shownQuestionsIndexes as questionIndex (questionIndex)}
-    <AiContainerPremadeQuestion question={premadeQuestions[questionIndex]} />
+    <AiContainerPremadeQuestion question={premadeQuestions[questionIndex]} on:press />
   {/each}
 
   <button

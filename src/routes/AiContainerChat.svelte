@@ -1,7 +1,7 @@
 <script lang="ts">
   import SendIcon from "$lib/icons/SendIcon.svelte";
 
-  let inputValue = "";
+  export let inputValue = "";
 </script>
 
 <div class="chat-container">

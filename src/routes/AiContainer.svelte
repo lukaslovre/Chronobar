@@ -2,9 +2,11 @@
   import AiContainerQuestions from "./AiContainerQuestions.svelte";
   import AiContainerChat from "./AiContainerChat.svelte";
 
-  // function putPremadeQuestionIntoInput(event: CustomEvent) {
-  //   inputValue = event.detail.question;
-  // }
+  let inputValue = "";
+
+  function putPremadeQuestionIntoInput(event: CustomEvent) {
+    inputValue = event.detail.question;
+  }
 </script>
 
 <section>
@@ -38,9 +40,9 @@
     <p>Virtualni konobar:</p>
   </div>
 
-  <AiContainerQuestions />
+  <AiContainerQuestions on:press={putPremadeQuestionIntoInput} />
 
-  <AiContainerChat />
+  <AiContainerChat {inputValue} />
 </section>
 
 <style lang="scss">
