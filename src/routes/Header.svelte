@@ -19,13 +19,13 @@
 
   h1 {
     font-size: 2rem;
-    color: $primary-color-light;
+    color: $app-title-color;
     font-weight: 700;
   }
 
   h2 {
     font-size: 0.875rem;
-    color: $primary-color-dark;
+    color: $app-subtitle-color;
     font-weight: 400;
   }
 </style>

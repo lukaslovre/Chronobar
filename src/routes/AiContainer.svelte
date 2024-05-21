@@ -23,14 +23,16 @@
 </section>
 
 <style lang="scss">
+  @import "$lib/styleVariables.scss";
+
   section {
     margin: 5rem 0.75rem;
     margin-top: 4rem;
     padding: 1.5rem 0.75rem;
-    background-color: #e8f1fd;
+    background-color: $ai-container-bg;
     border-radius: 1rem;
     border: 1px solid #ccc;
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 0.5rem $ai-container-shadow-color;
   }
 
   .header {
@@ -43,8 +45,8 @@
     h1 {
       font-size: 1.5rem;
       font-weight: 600;
-      // linear gradient color (with 3 stops (0, 0.5, 1))
-      background: linear-gradient(90deg, #3d8df5 0%, #135ab9 50%, #3d8df5 100%);
+
+      background: $ai-container-title-gradient;
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;

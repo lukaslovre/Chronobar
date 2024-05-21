@@ -52,16 +52,17 @@
 
     h1,
     h2 {
-      color: $primary-color-text;
       text-transform: uppercase;
       font-weight: 600;
     }
 
     h1 {
+      color: $menu-h1-color;
       font-size: 1.5rem;
     }
 
     h2 {
+      color: $menu-h2-color;
       font-size: 1.125rem;
     }
 
@@ -77,7 +78,7 @@
       justify-content: center;
 
       &:hover {
-        background-color: rgba($primary-color-dark, 0.1);
+        background-color: rgba($primary-color, 0.1);
       }
     }
   }

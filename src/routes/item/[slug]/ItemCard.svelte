@@ -121,19 +121,19 @@
     .name-and-price h1 {
       font-size: 1.25rem;
       font-weight: 600;
-      color: $primary-text-color;
+      color: $menu-item-name-color;
       margin-bottom: 0.5rem;
     }
     .name-and-price p {
       font-size: 1.125rem;
       font-weight: 600;
-      color: $primary-color;
+      color: $menu-item-price-color;
     }
 
     .description {
       font-size: 1rem;
       font-weight: 400;
-      color: $secondary-text-color-dark;
+      color: $menu-item-description-color;
       line-height: 150%;
     }
 
@@ -147,7 +147,7 @@
     .label {
       font-size: 0.875rem;
       font-weight: 600;
-      color: $secondary-text-color-dark;
+      color: $secondary-text-color;
     }
 
     .allergens-container {

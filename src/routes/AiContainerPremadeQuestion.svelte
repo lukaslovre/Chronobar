@@ -35,10 +35,10 @@
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 0.5rem;
-    background-color: #ffffff;
+    background-color: $ai-container-question-bg;
     box-shadow: 0 2px 8px rgba($primary-color-dark, 0.25);
 
-    color: $primary-color-dark;
+    color: $ai-container-question-color;
     font-size: 0.875rem;
     line-height: 150%;
     text-align: left;
@@ -49,7 +49,7 @@
       color 0.2s ease-out;
 
     &:hover {
-      background-color: $primary-color-dark;
+      background-color: $primary-color;
       color: white;
     }
   }

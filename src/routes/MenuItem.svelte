@@ -29,8 +29,8 @@
 
     padding: 0.75rem;
     border-radius: 0.5rem;
-    background-color: #fff;
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
+    background-color: $menu-item-bg;
+    box-shadow: 0 0.25rem 0.5rem $menu-item-shadow-color;
 
     transition:
       box-shadow 100ms ease-out,
@@ -64,7 +64,7 @@
   .name {
     font-size: 1rem;
     font-weight: 500;
-    color: $primary-text-color;
+    color: $menu-item-name-color;
 
     // truncate text ellipsis, only one row of text
     overflow: hidden;
@@ -76,7 +76,7 @@
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 150%;
-    color: $secondary-text-color;
+    color: $menu-item-description-color;
 
     // truncate text ellipsis, only one row of text
     overflow: hidden;
@@ -88,6 +88,6 @@
   .price {
     font-size: 1rem;
     font-weight: 600;
-    color: $primary-color;
+    color: $menu-item-price-color;
   }
 </style>
