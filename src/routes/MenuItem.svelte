@@ -7,7 +7,8 @@
     <div class="left">
       <p class="name">{item.name}</p>
       <p class="description">{item.description}</p>
-      <p class="price">{item.price.toFixed(2)} €</p>
+      <!-- <p class="price">{item.price.toFixed(2)} €</p> -->
+      <p class="price">{item.price}</p>
     </div>
     <img src={item.image_url} alt={item.name} />
   </li>
