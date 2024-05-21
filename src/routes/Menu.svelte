@@ -20,8 +20,8 @@
         protein: 35,
         carbs: 92,
         fats: 33,
-        allergens: ["gluten", "dairy"],
       },
+      allergens: ["gluten", "dairy"],
       popularity_score_out_of_5: 4.5,
       image_url: "https://picsum.photos/200",
       availability: "Available",
@@ -52,8 +52,8 @@
         protein: 30,
         carbs: 40,
         fats: 35,
-        allergens: ["gluten", "dairy"],
       },
+      allergens: ["gluten", "dairy"],
       popularity_score_out_of_5: 4.2,
       image_url: "https://picsum.photos/200",
       availability: "Available",
@@ -84,8 +84,8 @@
         protein: 8,
         carbs: 50,
         fats: 3,
-        allergens: ["dairy"],
       },
+      allergens: ["dairy"],
       popularity_score_out_of_5: 4.8,
       image_url: "https://picsum.photos/200",
       availability: "Available",
@@ -112,8 +112,8 @@
         protein: 20,
         carbs: 90,
         fats: 22,
-        allergens: ["gluten", "dairy"],
       },
+      allergens: ["gluten", "dairy"],
       popularity_score_out_of_5: 4.0,
       image_url: "https://picsum.photos/200",
       availability: "Available",
@@ -140,8 +140,8 @@
         protein: 18,
         carbs: 36,
         fats: 22,
-        allergens: ["gluten", "dairy"],
       },
+      allergens: ["gluten", "dairy"],
       popularity_score_out_of_5: 4.3,
       image_url: "https://picsum.photos/200",
       availability: "Available",
@@ -169,6 +169,24 @@
     }
   }
 </script>
+
+<section id="menu">
+  <div class="category-depth-1">
+    {#each Object.entries(groupByField(structuredMenu, "category")) as [category, items]}
+      <!-- TODO: ovo pretvorit u komponentu i onda svaki ima lokalni isOpen property -->
+      <div class="title-and-collapseButton">
+        <h1># {category}</h1>
+        <button
+          on:click={() => {
+            addSectionToCollapsedList(category);
+          }}
+        >
+          <ChevronIcon rotation={collapsedSections.includes(category) ? 180 : 0} />
+        </button>
+      </div>
+    {/each}
+  </div>
+</section>
 
 <section id="menu">
   <div class="category-depth-1">
