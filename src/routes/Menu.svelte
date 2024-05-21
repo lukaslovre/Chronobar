@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { slide } from "svelte/transition";
   import MenuItem from "./MenuItem.svelte";
-  import ChevronIcon from "$lib/icons/ChevronIcon.svelte";
+  import MenuCategoryContainer from "./MenuCategoryContainer.svelte";
   import { groupByField } from "$lib/utils";
 
   const structuredMenu: MenuItemType[] = [
@@ -154,103 +153,20 @@
       ],
     },
   ];
-
-  const slideTransitionProperties = {
-    duration: 200,
-  };
-
-  let collapsedSections: string[] = [];
-
-  function addSectionToCollapsedList(sectionName: string) {
-    if (collapsedSections.includes(sectionName)) {
-      collapsedSections = collapsedSections.filter((section) => section !== sectionName);
-    } else {
-      collapsedSections = [...collapsedSections, sectionName];
-    }
-  }
 </script>
 
 <section id="menu">
-  <div class="category-depth-1">
-    {#each Object.entries(groupByField(structuredMenu, "category")) as [category, items]}
-      <!-- TODO: ovo pretvorit u komponentu i onda svaki ima lokalni isOpen property -->
-      <div class="title-and-collapseButton">
-        <h1># {category}</h1>
-        <button
-          on:click={() => {
-            addSectionToCollapsedList(category);
-          }}
-        >
-          <ChevronIcon rotation={collapsedSections.includes(category) ? 180 : 0} />
-        </button>
-      </div>
-    {/each}
-  </div>
-</section>
-
-<section id="menu">
-  <div class="category-depth-1">
-    {#each Object.entries(groupByField(structuredMenu, "category")) as [category, items]}
-      <div class="title-and-collapseButton">
-        <h1># {category}</h1>
-        <button
-          on:click={() => {
-            addSectionToCollapsedList(category);
-          }}
-        >
-          <ChevronIcon rotation={collapsedSections.includes(category) ? 180 : 0} />
-        </button>
-      </div>
-
-      {#if !collapsedSections.includes(category)}
-        <div class="category-depth-2" transition:slide={slideTransitionProperties}>
-          {#each Object.entries(groupByField(items, "sub_category")) as [sub_category, sub_items]}
-            <div class="title-and-collapseButton">
-              <h2>## {sub_category}</h2>
-
-              <button
-                on:click={() => {
-                  addSectionToCollapsedList(sub_category);
-                }}
-              >
-                <ChevronIcon
-                  rotation={collapsedSections.includes(sub_category) ? 180 : 0}
-                />
-              </button>
-            </div>
-
-            {#if !collapsedSections.includes(sub_category)}
-              <div class="category-depth-3" transition:slide={slideTransitionProperties}>
-                {#each Object.entries(groupByField(sub_items, "sub_sub_category")) as [sub_sub_category, sub_sub_items]}
-                  <div class="title-and-collapseButton">
-                    <h3>### {sub_sub_category}</h3>
-
-                    <button
-                      on:click={() => {
-                        addSectionToCollapsedList(sub_sub_category);
-                      }}
-                    >
-                      <ChevronIcon
-                        rotation={collapsedSections.includes(sub_sub_category) ? 180 : 0}
-                      />
-                    </button>
-                  </div>
-
-                  {#if !collapsedSections.includes(sub_sub_category)}
-                    <ul transition:slide={slideTransitionProperties}>
-                      {#each sub_sub_items as item}
-                        <MenuItem {item} />
-                      {/each}
-                    </ul>
-                  {/if}
-                {/each}
-              </div>
-            {/if}
+  {#each Object.entries(groupByField(structuredMenu, "category")) as [category, items]}
+    <MenuCategoryContainer categoryDepth={1} categoryTitle={category}>
+      {#each Object.entries(groupByField(items, "sub_category")) as [sub_category, sub_items]}
+        <MenuCategoryContainer categoryDepth={2} categoryTitle={sub_category}>
+          {#each sub_items as item}
+            <MenuItem {item} />
           {/each}
-        </div>
-      {/if}
-    {/each}
-  </div>
+        </MenuCategoryContainer>
+      {/each}
+    </MenuCategoryContainer>
+  {/each}
 </section>
 
 <style lang="scss">
@@ -260,73 +176,6 @@
     display: flex;
     flex-direction: column;
     padding: 0 1rem;
-
-    h1,
-    h2,
-    h3 {
-      color: $primary-color-text;
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-
-    .category-depth-1,
-    .category-depth-2,
-    .category-depth-3 {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .category-depth-1 {
-      gap: 2.5rem;
-    }
-
-    .category-depth-2 {
-      gap: 2rem;
-    }
-
-    .category-depth-3 {
-      gap: 1rem;
-    }
-
-    h1 {
-      font-size: 1.5rem;
-    }
-
-    h2 {
-      font-size: 1.25rem;
-    }
-
-    h3 {
-      font-size: 1rem;
-    }
-  }
-
-  .title-and-collapseButton {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    button {
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &:hover {
-        background-color: rgba($primary-color-dark, 0.1);
-      }
-    }
-  }
-
-  ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    gap: 2.5rem;
   }
 </style>
