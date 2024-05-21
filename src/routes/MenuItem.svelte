@@ -63,7 +63,7 @@
 
   .name {
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 500;
     color: $primary-text-color;
 
     // truncate text ellipsis, only one row of text
@@ -87,7 +87,7 @@
 
   .price {
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     color: $primary-color;
   }
 </style>
