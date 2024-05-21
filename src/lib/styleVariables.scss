@@ -1,9 +1,35 @@
-$background-color: #f1f1f1; // hardcoded u app.html
-$primary-text-color: #16191d; // hardcoded u app.html
-$secondary-text-color: #586474;
-$secondary-text-color-dark: #424e57;
+$primary-text-color: #1a1a1a; // hardcoded u app.html
+$secondary-text-color: #666666;
+// $secondary-text-color-dark: #424e57;
 
 $primary-color: #1c73e8;
 $primary-color-text: #135ab9;
 $primary-color-light: #1c73e8;
 $primary-color-dark: #073066;
+
+// App header
+$app-title-color: #185eba;
+$app-subtitle-color: $primary-color-dark;
+
+// Ai Container
+$ai-container-bg: #e8f1fd;
+$ai-container-shadow-color: rgba(0, 0, 0, 0.05);
+$ai-container-title-gradient: linear-gradient(
+  90deg,
+  #3d8df5 0%,
+  #135ab9 50%,
+  #3d8df5 100%
+);
+$ai-container-question-bg: #ffffff;
+$ai-container-question-color: #073066;
+
+// Menu
+$menu-h1-color: #135ab9;
+$menu-h2-color: $menu-h1-color;
+
+// Menu item
+$menu-item-bg: #ffffff;
+$menu-item-shadow-color: rgba(0, 0, 0, 0.05);
+$menu-item-name-color: $primary-text-color;
+$menu-item-description-color: $secondary-text-color;
+$menu-item-price-color: $primary-color;

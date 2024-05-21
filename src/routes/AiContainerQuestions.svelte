@@ -72,6 +72,8 @@
     margin-bottom: 2rem;
 
     #refresh-premade-questions-button {
+      margin-top: 0.5rem;
+
       display: flex;
       align-items: center;
       column-gap: 0.5rem;
