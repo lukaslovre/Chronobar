@@ -1,5 +1,6 @@
 <script lang="ts">
   export let rotation = 0;
+  export let color = "#135AB9";
 </script>
 
 <svg
@@ -10,7 +11,7 @@
   xmlns="http://www.w3.org/2000/svg"
   style:transform={`rotate(${rotation}deg)`}
 >
-  <path d="M7.42 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.42 8.59Z" fill="#135AB9" />
+  <path d="M7.42 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.42 8.59Z" fill={color} />
 </svg>
 
 <style lang="scss">

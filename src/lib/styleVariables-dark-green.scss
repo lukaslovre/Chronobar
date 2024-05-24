@@ -1,0 +1,59 @@
+$primary-text-color: #ffffff; // hardcoded u app.html
+$secondary-text-color: #bfbfbf;
+// $secondary-text-color-dark: #424e57;
+
+$primary-color: #8bf3a8;
+$primary-color-text: #8bf3a8;
+$primary-color-light: #8bf3a8;
+$primary-color-dark: #8bf3a8;
+
+// App header
+$app-title-color: #185eba;
+$app-subtitle-color: #073066;
+
+// Ai Container
+$ai-container-bg: #1a1a1a;
+// gradient that has 3 different radial gradients on different positions
+$ai-container-bg-gradient-1: radial-gradient(circle at 0% 0%, #3d8df5 0%, #3d8df5 100%);
+$ai-container-bg-gradient-2: radial-gradient(circle at 100% 0%, #d1f53d 0%, #d1f53d 100%);
+$ai-container-bg-gradient-3: radial-gradient(
+  circle at 100% 100%,
+  #f5503d 0%,
+  #f5503d 100%
+);
+
+$ai-container-shadow-color: rgba(255, 255, 255, 0.05);
+$ai-container-border-color: #3a3a3a;
+$ai-container-title-gradient: linear-gradient(
+  90deg,
+  #3d8df5 0%,
+  #8bf3a8 50%,
+  #8bb8f3 100%
+);
+
+// Ai Container Question
+$ai-container-question-bg: #262626;
+$ai-container-question-color: #e6e6e6;
+$ai-container-question-shadow-color: rgba(0, 0, 0, 0.25);
+
+// Ai Container buttons
+$ai-container-button-color: #80b6ff;
+$ai-container-button-bg: rgba(28, 116, 233, 0.15);
+$ai-container-button-border: rgba(255, 255, 255, 0.05);
+$ai-container-button-shadow-color: rgba(0, 0, 0, 0.125);
+
+// Ai Container chat
+$ai-container-input-color: #a8a8a8;
+$ai-container-input-bg: #333333;
+$ai-container-input-border: #808080;
+
+// Menu
+$menu-h1-color: #8bf3a8;
+$menu-h2-color: $menu-h1-color;
+
+// Menu item
+$menu-item-bg: #333333;
+$menu-item-shadow-color: rgba(0, 0, 0, 0.1);
+$menu-item-name-color: $primary-text-color;
+$menu-item-description-color: $secondary-text-color;
+$menu-item-price-color: $primary-color;
