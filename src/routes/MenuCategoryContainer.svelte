@@ -4,8 +4,7 @@
 
   export let categoryDepth: number = 1;
   export let categoryTitle: string = "Category title";
-
-  let isCollapsed: boolean = false;
+  export let isCollapsed: boolean = false;
 </script>
 
 <div class="category-container" style:gap={categoryDepth === 1 ? "2rem" : "1rem"}>
@@ -52,18 +51,19 @@
 
     h1,
     h2 {
-      text-transform: uppercase;
       font-weight: 600;
     }
 
     h1 {
       color: $menu-h1-color;
       font-size: 1.5rem;
+      text-transform: uppercase;
     }
 
     h2 {
       color: $menu-h2-color;
       font-size: 1.125rem;
+      text-transform: capitalize;
     }
 
     button {
