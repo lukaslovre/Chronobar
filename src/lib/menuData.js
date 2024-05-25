@@ -1517,3 +1517,7 @@ export const menu = [
     ],
   },
 ];
+
+export const findByName = (name) => {
+  return menu.find((item) => item.name === name);
+};
