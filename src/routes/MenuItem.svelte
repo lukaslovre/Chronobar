@@ -10,7 +10,9 @@
       <p class="price">{item.price.toFixed(2)} {item.currency}</p>
       <!-- <p class="price">{item.price}</p> -->
     </div>
-    <img src={item.image_url} alt={item.name} />
+    {#if item.image_url}
+      <img src={item.image_url} alt={item.name} />
+    {/if}
   </li>
 </a>
 
