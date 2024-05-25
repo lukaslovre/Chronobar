@@ -106,8 +106,8 @@
   @import "$lib/styleVariables.scss";
 
   main {
-    background-color: #fff;
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.125);
+    background-color: $menu-item-bg;
+    box-shadow: 0 0.25rem 0.5rem $menu-item-shadow-color;
 
     display: flex;
     flex-direction: column;
@@ -188,17 +188,17 @@
         thead tr {
           font-weight: 500;
           td {
-            background-color: #f5f5f5;
-            border-top: 1px solid #ccc;
+            background-color: $table-header-bg;
+            border-top: 1px solid $ai-container-input-border;
           }
 
           td:first-child {
             border-radius: 0.5rem 0 0 0;
-            border-left: 1px solid #ccc;
+            border-left: 1px solid $ai-container-input-border;
           }
           td:last-child {
             border-radius: 0 0.5rem 0 0;
-            border-right: 1px solid #ccc;
+            border-right: 1px solid $ai-container-input-border;
           }
         }
 
@@ -206,16 +206,16 @@
           font-weight: 400;
 
           td {
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid $ai-container-input-border;
           }
 
           td:first-child {
             border-radius: 0 0 0 0.5rem;
-            border-left: 1px solid #ccc;
+            border-left: 1px solid $ai-container-input-border;
           }
           td:last-child {
             border-radius: 0 0 0.5rem 0;
-            border-right: 1px solid #ccc;
+            border-right: 1px solid $ai-container-input-border;
           }
         }
       }
