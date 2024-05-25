@@ -4,11 +4,25 @@
   import { groupByField } from "$lib/utils";
 
   import { menu as structuredMenu } from "$lib/menuData";
+  import ViewListIcon from "$lib/icons/ViewListIcon.svelte";
 
   let isCollapsedInitial = true;
 </script>
 
 <section id="menu">
+  <div class="button-container">
+    <button
+      type="button"
+      id="unfold-all-button"
+      on:click={() => {
+        isCollapsedInitial = !isCollapsedInitial;
+      }}
+    >
+      <ViewListIcon color="#1C73E8" />
+      {isCollapsedInitial ? "Unfold all" : "Fold all"}
+    </button>
+  </div>
+
   {#each Object.entries(groupByField(structuredMenu, "category")) as [category, items]}
     <MenuCategoryContainer
       categoryDepth={1}
@@ -36,6 +50,35 @@
   #menu {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2rem;
+
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 0.5rem;
+
+      #unfold-all-button {
+        background-color: rgba(128, 182, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 2px 1px rgba(0, 0, 0, 0.125);
+
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        color: #1c73e8;
+        font-size: 0.875rem;
+        font-weight: 700;
+
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba($primary-color, 0.1);
+        }
+      }
+    }
   }
 </style>
