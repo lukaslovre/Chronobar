@@ -1,18 +1,31 @@
 <script lang="ts">
   import SendIcon from "$lib/icons/SendIcon.svelte";
+  import { onMount } from "svelte";
 
   export let inputValue = "";
+
+  let chatTextArea: HTMLTextAreaElement;
+
+  onMount(() => {
+    resizeTextarea();
+  });
+
+  function resizeTextarea() {
+    chatTextArea.style.height = "auto";
+    chatTextArea.style.height = `${chatTextArea.scrollHeight}px`;
+  }
 </script>
 
 <div class="chat-container">
   <div class="input">
-    <input
-      type="text"
+    <textarea
+      bind:this={chatTextArea}
+      on:input={resizeTextarea}
       name=""
       id=""
-      placeholder="Postavi pitanje"
-      bind:value={inputValue}
-    />
+      placeholder="Postavi pitanje o ponudi">{inputValue}</textarea
+    >
+
     <button><SendIcon /></button>
   </div>
 </div>
@@ -22,22 +35,29 @@
   .chat-container {
     .input {
       display: flex;
+      align-items: flex-end;
       column-gap: 1rem;
 
-      input {
+      textarea {
         flex: 1;
-        padding: 0.5rem 1rem;
+        padding: 1rem;
         border: 1px solid #ccc;
-        border-radius: 10rem;
+        border-radius: 1.5rem;
         background-color: #fff;
-        // font-size: 1rem;
+        font-size: 0.875rem;
+
+        resize: none;
+        min-height: 2rem;
+        overflow: hidden;
+        color: #333;
+        line-height: 150%;
 
         &::placeholder {
           color: #808080;
         }
 
         &:focus {
-          outline: 2px solid rgba(0, 0, 0, 0.1);
+          outline: 2px solid $primary-color;
         }
       }
 
