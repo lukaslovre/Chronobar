@@ -26,16 +26,16 @@
   @import "$lib/styleVariables.scss";
 
   section {
-    margin: 5rem 0.75rem;
+    margin: 5rem 0.5rem;
     margin-top: 4rem;
-    padding: 1.5rem 0.75rem;
+    padding: 2rem 1rem;
     // background-color: $ai-container-bg;
     background-image: $ai-container-bg-url;
     background-size: cover;
     background-position: center;
 
     border-radius: 1rem;
-    border: 1px solid #ccc;
+    border: 1px solid $ai-container-border-color;
     box-shadow: 0 0 0.5rem $ai-container-shadow-color;
   }
 

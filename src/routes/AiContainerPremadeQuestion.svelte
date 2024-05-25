@@ -36,7 +36,7 @@
     border: none;
     border-radius: 0.5rem;
     background-color: $ai-container-question-bg;
-    box-shadow: 0 2px 8px rgba($primary-color-dark, 0.25);
+    box-shadow: 0 2px 8px $ai-container-question-shadow-color;
 
     color: $ai-container-question-color;
     font-size: 0.875rem;

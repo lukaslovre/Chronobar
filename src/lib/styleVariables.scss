@@ -15,6 +15,7 @@ $app-subtitle-color: $primary-color-dark;
 $ai-container-bg: #e8f1fd;
 $ai-container-bg-url: url("/gradient-light.png");
 $ai-container-shadow-color: rgba(0, 0, 0, 0.05);
+$ai-container-border-color: #cccccc;
 $ai-container-title-gradient: linear-gradient(
   90deg,
   #3d8df5 0%,
@@ -25,6 +26,18 @@ $ai-container-title-gradient: linear-gradient(
 // Ai Container Question
 $ai-container-question-bg: #ffffff;
 $ai-container-question-color: #073066;
+$ai-container-question-shadow-color: rgba(0, 0, 0, 0.25);
+
+// Ai Container buttons
+$ai-container-button-color: $primary-color;
+$ai-container-button-bg: rgba($primary-color, 0.1);
+$ai-container-button-border: rgba(255, 255, 255, 0.05);
+$ai-container-button-shadow-color: rgba(0, 0, 0, 0.125);
+
+// Ai Container chat
+$ai-container-input-color: #808080;
+$ai-container-input-bg: #ffffff;
+$ai-container-input-border: #cccccc;
 
 // Menu
 $menu-h1-color: #135ab9;

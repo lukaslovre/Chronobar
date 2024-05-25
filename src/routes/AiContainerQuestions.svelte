@@ -103,12 +103,12 @@
       column-gap: 0.5rem;
 
       padding: 0.25rem 2rem;
-      border: 2px solid $primary-color;
+      border: 2px solid $ai-container-button-border;
       border-radius: 0.25rem;
-      background-color: #fff;
-      box-shadow: 0 2px 1px rgba(0, 0, 0, 0.125);
+      background-color: $ai-container-button-bg;
+      box-shadow: 0 2px 1px $ai-container-button-shadow-color;
 
-      color: $primary-color;
+      color: $ai-container-button-color;
       font-weight: 700;
       font-size: 0.875rem;
 
