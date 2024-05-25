@@ -29,18 +29,12 @@
     margin: 5rem 0.75rem;
     margin-top: 4rem;
     padding: 3rem 1rem;
-    // gradient that has 3 different radial gradients on different positions
-    // $ai-container-bg-gradient-1: radial-gradient(circle at 0% 0%, #3d8df5 0%, #3d8df5 100%);
-    // $ai-container-bg-gradient-2: radial-gradient(circle at 100% 0%, #d1f53d 0%, #d1f53d 100%);
-    // $ai-container-bg-gradient-3: radial-gradient(
-    //   circle at 100% 100%,
-    //   #f5503d 0%,
-    //   #f5503d 100%
-    // );
-    background-color: $ai-container-bg;
 
-    background-size: 50% 50%;
-    background-repeat: no-repeat;
+    // background-color: $ai-container-bg;
+    background-image: $ai-container-bg-url;
+    background-size: cover;
+    background-position: center;
+
     border-radius: 1rem;
     border: 1px solid $ai-container-border-color;
     box-shadow: 0 0 0.5rem $ai-container-shadow-color;

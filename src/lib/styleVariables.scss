@@ -13,6 +13,7 @@ $app-subtitle-color: $primary-color-dark;
 
 // Ai Container
 $ai-container-bg: #e8f1fd;
+$ai-container-bg-url: url("/gradient-light.png");
 $ai-container-shadow-color: rgba(0, 0, 0, 0.05);
 $ai-container-title-gradient: linear-gradient(
   90deg,
@@ -20,6 +21,8 @@ $ai-container-title-gradient: linear-gradient(
   #135ab9 50%,
   #3d8df5 100%
 );
+
+// Ai Container Question
 $ai-container-question-bg: #ffffff;
 $ai-container-question-color: #073066;
 

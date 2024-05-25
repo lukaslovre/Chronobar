@@ -29,7 +29,11 @@
     margin: 5rem 0.75rem;
     margin-top: 4rem;
     padding: 1.5rem 0.75rem;
-    background-color: $ai-container-bg;
+    // background-color: $ai-container-bg;
+    background-image: $ai-container-bg-url;
+    background-size: cover;
+    background-position: center;
+
     border-radius: 1rem;
     border: 1px solid #ccc;
     box-shadow: 0 0 0.5rem $ai-container-shadow-color;

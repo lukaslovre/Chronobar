@@ -13,14 +13,7 @@ $app-subtitle-color: #073066;
 
 // Ai Container
 $ai-container-bg: #1a1a1a;
-// gradient that has 3 different radial gradients on different positions
-$ai-container-bg-gradient-1: radial-gradient(circle at 0% 0%, #3d8df5 0%, #3d8df5 100%);
-$ai-container-bg-gradient-2: radial-gradient(circle at 100% 0%, #d1f53d 0%, #d1f53d 100%);
-$ai-container-bg-gradient-3: radial-gradient(
-  circle at 100% 100%,
-  #f5503d 0%,
-  #f5503d 100%
-);
+$ai-container-bg-url: url("/gradient-dark.png");
 
 $ai-container-shadow-color: rgba(255, 255, 255, 0.05);
 $ai-container-border-color: #3a3a3a;
