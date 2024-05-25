@@ -23,11 +23,11 @@
   }
 
   .menu-item {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     gap: 1rem;
 
+    margin: 0 1rem;
     padding: 0.75rem;
     border-radius: 0.5rem;
     background-color: $menu-item-bg;

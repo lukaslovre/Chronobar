@@ -17,5 +17,6 @@
 <style lang="scss">
   svg {
     transition: transform 200ms ease-out;
+    flex-shrink: 0;
   }
 </style>

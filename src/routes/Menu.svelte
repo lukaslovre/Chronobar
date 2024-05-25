@@ -36,7 +36,6 @@
   #menu {
     display: flex;
     flex-direction: column;
-    padding: 0 1rem;
     gap: 2.5rem;
   }
 </style>

@@ -8,21 +8,21 @@
 </script>
 
 <div class="category-container" style:gap={categoryDepth === 1 ? "2rem" : "1rem"}>
-  <div class="title-and-collapseButton">
+  <button
+    type="button"
+    class="title-and-collapseButton"
+    on:click={() => {
+      isCollapsed = !isCollapsed;
+    }}
+  >
     {#if categoryDepth === 1}
       <h1>{categoryTitle}</h1>
     {:else}
       <h2>{categoryTitle}</h2>
     {/if}
 
-    <button
-      on:click={() => {
-        isCollapsed = !isCollapsed;
-      }}
-    >
-      <ChevronIcon rotation={isCollapsed ? 180 : 0} />
-    </button>
-  </div>
+    <ChevronIcon rotation={isCollapsed ? 180 : 0} />
+  </button>
 
   {#if !isCollapsed}
     <div
@@ -45,6 +45,18 @@
   }
 
   .title-and-collapseButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    &:hover {
+      background-color: rgba($primary-color, 0.1);
+    }
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,22 +76,6 @@
       color: $menu-h2-color;
       font-size: 1.125rem;
       text-transform: capitalize;
-    }
-
-    button {
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &:hover {
-        background-color: rgba($primary-color, 0.1);
-      }
     }
   }
 </style>
