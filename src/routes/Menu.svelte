@@ -55,11 +55,11 @@
     .button-container {
       display: flex;
       justify-content: flex-end;
-      padding: 0 0.5rem;
+      padding: 0 1rem;
 
       #unfold-all-button {
-        background-color: rgba(128, 182, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        background-color: rgba($primary-color, 0.1);
+        border: 1px solid rgba($primary-color, 0.5);
         box-shadow: 0 2px 1px rgba(0, 0, 0, 0.125);
 
         padding: 0.5rem 1rem;
