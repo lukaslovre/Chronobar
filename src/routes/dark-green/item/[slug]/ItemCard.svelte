@@ -68,7 +68,7 @@
 
     {#if itemData.allergens.length > 0}
       <div class="allergens-container">
-        <p class="label">Allergens</p>
+        <p class="label">Alergeni</p>
         <div>
           {#each itemData.allergens as allergen}
             <div class="tag">{allergen}</div>
@@ -78,15 +78,15 @@
     {/if}
 
     <div class="nutrition-container">
-      <p class="label">Nutrition</p>
+      <p class="label">Nutritivne vrijednosti</p>
 
       <table>
         <thead>
           <tr>
-            <td>Calories</td>
-            <td>Protein</td>
-            <td>Carbs</td>
-            <td>Fats</td>
+            <td>Kalorije</td>
+            <td>Proteini</td>
+            <td>Ugljikohidrati</td>
+            <td>Masti</td>
           </tr>
         </thead>
         <tbody>
@@ -140,7 +140,7 @@
     .description {
       font-size: 1rem;
       font-weight: 400;
-      color: $menu-item-description-color;
+      color: #e6e6e6;
       line-height: 150%;
     }
 
@@ -154,7 +154,7 @@
     .label {
       font-size: 0.875rem;
       font-weight: 600;
-      color: $secondary-text-color;
+      color: #e6e6e6;
     }
 
     .allergens-container {
@@ -179,6 +179,7 @@
         border-collapse: separate;
         border-spacing: 0;
         font-size: 0.5rem;
+        color: $primary-text-color;
 
         td {
           padding: 0.75rem;

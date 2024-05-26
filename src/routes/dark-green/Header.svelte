@@ -15,22 +15,22 @@
     id="change-language-button"
     on:click={() => (languageMenuVisible = !languageMenuVisible)}
   >
-    <img src="flags-4x3/hr.svg" alt="flag" />
+    <img src="/flags-4x3/hr.svg" alt="flag" />
     <span>HR</span>
   </button>
 
   {#if languageMenuVisible}
     <div id="language-menu" transition:scale={{ duration: 200, start: 0.5 }}>
       <button type="button">
-        <img src="flags-4x3/gb.svg" alt="flag" />
+        <img src="/flags-4x3/gb.svg" alt="flag" />
         <span>EN</span></button
       >
       <button type="button">
-        <img src="flags-4x3/de.svg" alt="flag" />
+        <img src="/flags-4x3/de.svg" alt="flag" />
         <span>DE</span>
       </button>
       <button type="button">
-        <img src="flags-4x3/it.svg" alt="flag" />
+        <img src="/flags-4x3/it.svg" alt="flag" />
         <span>IT</span>
       </button>
     </div>
