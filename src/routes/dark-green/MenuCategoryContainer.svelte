@@ -21,7 +21,7 @@
       <h2>{categoryTitle}</h2>
     {/if}
 
-    <ChevronIcon rotation={isCollapsed ? 180 : 0} color="#8BF3A8" />
+    <ChevronIcon rotation={isCollapsed ? 0 : 180} color="#8BF3A8" />
   </button>
 
   {#if !isCollapsed}

@@ -41,7 +41,8 @@
       textarea {
         flex: 1;
         padding: 1rem;
-        border: 1px solid $ai-container-input-border;
+        outline: 1px solid $ai-container-input-border;
+        border: none;
         border-radius: 1.5rem;
         background-color: $ai-container-input-bg;
         font-size: 0.875rem;

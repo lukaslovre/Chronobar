@@ -2,7 +2,7 @@
   export let item: MenuItemType;
 </script>
 
-<a href={`item/${item.name}`}>
+<a href={`/dark-green/item/${item.name}`}>
   <li class="menu-item">
     <div class="left">
       <p class="name">{item.name}</p>
